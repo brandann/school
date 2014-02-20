@@ -1,0 +1,44 @@
+/*
+ * ViewerDriver.java
+ */
+package extreme.hotel.viewer;
+import Calendar.DateAD;
+import java.io.File;
+
+/**
+ * Fake class for GUI Build
+ * Brandan
+ */
+public class ViewerDriver {
+    public ViewerDriver()
+    {
+        tempArray = new Reservation[0];
+    }
+    
+    public Reservation[] searchFull(String searchString)
+    {
+        return tempArray;
+    }
+    
+    public Reservation[] searchPart(String searchString)
+    {
+        return tempArray;
+    }
+    
+    public Reservation[] searchArrival(DateAD arrival)
+    {
+        return tempArray;
+    }
+    
+    public Reservation[] searchDepart(DateAD departure)
+    {
+        return tempArray;
+    }
+    
+    public void loadDatabase(File databaseFile)
+    {
+        
+    }
+    
+    private Reservation[] tempArray;
+}
