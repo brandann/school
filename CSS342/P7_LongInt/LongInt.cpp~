@@ -1,0 +1,65 @@
+#include "longint.h"
+/*
+istream& LongInt::operator>>(istream &in, LongInt &rhs){
+    return in;
+}
+
+ostream& LongInt::operator<<(ostream &os, LongInt &rhs){
+    return os;
+}
+*/
+LongInt::LongInt(const string str){
+    for(int i = 0; i < str.length(); i++)
+        digits.addBack(str[i]);
+}
+
+LongInt::LongInt(const LongInt& orig) {
+    
+}
+
+LongInt::LongInt() {
+    
+}
+
+LongInt::~LongInt() {
+    
+}
+/*
+LongInt LongInt::operator+(const LongInt &rhs){
+    LongInt temp();
+    return temp;
+}
+
+LongInt LongInt::operator-(const LongInt &rhs){
+    LongInt temp();
+    return temp;
+}
+
+const LongInt& LongInt::operator=( const LongInt &rhs ){
+    return rhs;
+}
+
+bool LongInt::operator< ( const LongInt & rhs ) const{
+    return false;
+}
+
+bool LongInt::operator<=( const LongInt & rhs ) const{
+    return false;
+}
+
+bool LongInt::operator> ( const LongInt & rhs ) const{
+    return false;
+}
+
+bool LongInt::operator>=( const LongInt & rhs ) const{
+    return false;
+}
+
+bool LongInt::operator==( const LongInt & rhs ) const{
+    return false;
+}
+
+bool LongInt::operator!=( const LongInt & rhs ) const{
+    return false;
+}
+*/
