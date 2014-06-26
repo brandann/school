@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BrandanHaertelExercise2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="buttonQuit">Quit</string>
+    <string name="buttonIncrement">Increment</string>
+    <string name="buttonDec">Decrement</string>
+    <string name="nullText">nullText</string>
+
+</resources>
