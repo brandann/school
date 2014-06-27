@@ -1,0 +1,115 @@
+package uwb.css390.BrandanHaertelMP1;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+	
+	//MainActivity Objects
+	TextView mTextTime;
+	TextView mTextSpeed;
+	TextView mTextCount;
+	ProgressBar mProgressTime;
+	SeekBar mSeekSpeed;
+	Button mButtonInc;
+	Button mButtonDec;
+	Button mButtonQuit;
+	
+	//Vars
+	int mSpeed = 5;
+	int mCount = 0;
+	int mSecond = 0;
+	int mMillisecond = 0;
+	
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        mTextTime = (TextView) findViewById(R.id.textTime);
+        mTextSpeed = (TextView) findViewById(R.id.textSpeed);
+        mTextSpeed = (TextView) findViewById(R.id.textCount);
+        mProgressTime = (ProgressBar) findViewById(R.id.progressTime);
+        mSeekSpeed = (SeekBar) findViewById(R.id.seekSpeed);
+        mButtonInc = (Button) findViewById(R.id.buttonInc);
+        mButtonDec = (Button) findViewById(R.id.buttonDec);
+        mButtonQuit = (Button) findViewById(R.id.buttonQuit);
+        
+        // Initial Values
+        mTextCount.setText("" + mCount);
+        mSeekSpeed.setProgress(5);
+        
+        mSeekSpeed.setOnSeekBarChangeListener(
+        		new OnSeekBarChangeListener() {
+					@Override
+					public void onProgressChanged(SeekBar seekBar,
+							int progress, boolean fromUser) {
+						// TODO Auto-generated method stub
+						processSeek(progress);
+					}
+
+					@Override
+					public void onStartTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+						// Not Used
+					}
+
+					@Override
+					public void onStopTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+						// Not Used
+					}
+        		});
+        
+        // What to do when QuitButton is clicked?
+        mButtonQuit.setOnClickListener(
+			new OnClickListener(){
+		      public void onClick(View v){
+		    	  processQuit();
+		      }
+		});
+		
+		// What to do when IncButton is clicked?
+		mButtonInc.setOnClickListener(
+			new OnClickListener() {
+				public void onClick(View v){
+					processIncCount(1);
+				}
+			});
+		
+		// What to do when IncButton is clicked?
+		mButtonDec.setOnClickListener(
+			new OnClickListener() {
+				public void onClick(View v){
+					processIncCount(-1);
+				}
+			});
+    }
+    
+    private void processIncCount(int i){
+    	mCount += i;
+    	mTextCount.setText("" + mCount);
+    }
+    
+    private void processSetTime(int sec, int millsec){
+    	mTextTime.setText("" + sec + ":" + millsec);
+    }
+    
+    private void processSeek(int value){
+    	mSpeed = value;
+    	mTextSpeed.setText("Increment Rate: " + mSpeed);
+    }
+    
+    private void processQuit(){
+    	System.exit(0);
+		finish();
+    }
+}
