@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BrandanHaertelEX3</string>
+    <string name="buttonQuit">Quit</string>
+    <string name="NULLSTRING">null</string>
+    <string name="buttonCamera">Camera</string>
+    <string name="buttonUp">^</string>
+    <string name="buttonDown">v</string>
+    <string name="buttonLeft">&lt;</string>
+    <string name="buttonRight">&gt;</string>
+    <string name="buttonStop">o</string>
+
+</resources>

@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 	int mSpeed = 5;
 	int mSecond = 0;
 	int mMillisecond = 0;
-	int mScale = 10;
+	int mScale = 100;
 	
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB) @SuppressLint("NewApi") @Override
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
         
         mTimerTask = new MyTimerTask(this, mTextCount, mProgressTime);
 		mGlobalTimer = new Timer("GlobalTimer");
-		mGlobalTimer.schedule(mTimerTask, 100, 100);
+		mGlobalTimer.schedule(mTimerTask, 10, 10);
        
 		mProgressTime.setOnDragListener(
 				new OnDragListener() {
