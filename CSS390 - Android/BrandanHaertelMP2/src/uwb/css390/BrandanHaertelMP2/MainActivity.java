@@ -7,6 +7,7 @@ import uwb.css390.BrandanHaertelMP2.R;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.hardware.Sensor;
@@ -15,6 +16,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -51,6 +53,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	int mSWidth; // screen width
 	int mSHeight; // screen Height
 	
+	final int MILLTOSECONDS = 1000;
 	int mMoveFactor = 1;
 	float buffer = 0f;
 
@@ -104,13 +107,10 @@ public class MainActivity extends Activity implements SensorEventListener {
 						break;
 					case MotionEvent.ACTION_UP:
 						break;
-					
 				}
 				return true;
 			}
 		});
-		
-		
     }
     
     private void makeHero(float x, float y){
@@ -124,6 +124,11 @@ public class MainActivity extends Activity implements SensorEventListener {
     private void updateHeroCount(int i){
     	mHeroCount += i;
     	mTextHeroCount.setText("Hero Count: " + mHeroCount + " Heros!");
+    }
+    
+    private void vibrate(int seconds){
+    	final Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    	v.vibrate(seconds * MILLTOSECONDS);
     }
     
     private void updateScoreCount(int i){
@@ -140,7 +145,8 @@ public class MainActivity extends Activity implements SensorEventListener {
  			accelManager.registerListener(this, 
  	    				accelManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
  	    				SensorManager.SENSOR_DELAY_NORMAL);
- 		} else {
+ 		} 
+ 		else {
  			accelManager.unregisterListener(this);
  		}
  	}
@@ -163,7 +169,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 				}
 			}
          }
-         else{
+         else {
          }
  	}
  	
@@ -181,6 +187,7 @@ public class MainActivity extends Activity implements SensorEventListener {
  		if(collision()){
  			updateScoreCount(1);
  			removeView(mCurrentHero);
+ 			vibrate(1);
  			return;
  		}
  		// clamp left and right side
