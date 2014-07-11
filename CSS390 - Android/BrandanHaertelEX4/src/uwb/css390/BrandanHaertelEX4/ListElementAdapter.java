@@ -11,14 +11,17 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class ListElementAdapter extends BaseAdapter {
@@ -73,8 +76,8 @@ public class ListElementAdapter extends BaseAdapter {
 		return position;
 	}
 
-	public static void initialzeData(AssetManager loader) {
-		mAllPictures = getCameraImages();
+	public static void initialzeData(AssetManager loader, Activity a) {
+		mAllPictures = getCameraImages(a);
 		kPretendData1 = loadBitmap(loader, "duck.jpg");
 		kPretendData2 = loadBitmap(loader, "kid.png");
 	}
@@ -90,6 +93,7 @@ public class ListElementAdapter extends BaseAdapter {
 		nameEcho.setText("Name: " + position + ".name");
 		dateEcho.setText("Date: " + position + "." + position*2 + "." + position*3);
 		img.setImageBitmap(kPretendData1);
+		Log.d("Brandan", mAllPictures.get(position));
 		return useView;
 	}
 	
@@ -123,7 +127,7 @@ public class ListElementAdapter extends BaseAdapter {
 	private static Bitmap kPretendData2 = null;
 	public static final String CAMERA_IMAGE_BUCKET_NAME = Environment.getExternalStorageDirectory().toString() + "/DCIM/Camera";
 	public static final String CAMERA_IMAGE_BUCKET_ID =	getBucketId(CAMERA_IMAGE_BUCKET_NAME);
-	private static ArrayList<String> mAllPictures;
+	private static List<String> mAllPictures;
 
 	
 }
