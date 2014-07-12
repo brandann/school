@@ -30,7 +30,8 @@ public class MainActivity extends Activity {
 			mShowSelected.setChecked(false);
 		mImageMain.setVisibility(View.INVISIBLE);
 		removeFrag(mSelectFrag);
-		addFrag(mSelectFrag = new SelectImageFragment());
+		//addFrag(mSelectFrag = new SelectImageFragment());
+		addFrag(mSelectFrag);
 		mImageMain.setVisibility(View.INVISIBLE);
 	}
 	
@@ -39,6 +40,13 @@ public class MainActivity extends Activity {
 			addFrag(mShowFrag);
 			removeFrag(mSelectFrag);
 			mImageMain.setVisibility(View.INVISIBLE);
+			//ImageView img = (ImageView) findViewById(R.id.imageShow);
+			//TextView txt = (TextView) findViewById(R.id.textShow);
+			//img.setImageBitmap(mSelectFrag.getThumbnailImage());
+			//txt.setText(mSelectFrag.getImageName());
+			//TextView txt = (TextView) mShowFrag..findViewById(R.id.textShow);
+			mShowFrag.setShowable(mSelectFrag.getThumbnailImage(), mSelectFrag.getImageName());
+			//txt.setText("Brandan");
 		}
 		else{
 			removeFrag(mShowFrag);
@@ -62,25 +70,31 @@ public class MainActivity extends Activity {
 	
 	private void initComponents(){
 		mShowFrag = new ShowImageFragment();
-		mSelectFrag = new SelectImageFragment();
+		
 		mButtonImage = (Button) findViewById(R.id.buttonImage);
 		mShowSelected = (CheckBox) findViewById(R.id.checkSelected);
 		mImageMain = (ImageView) findViewById(R.id.imageSelect);
 		
-		mImageMain.setOnSystemUiVisibilityChangeListener(new OnSystemUiVisibilityChangeListener(){
-
-			@Override
-			public void onSystemUiVisibilityChange(int arg0) {
-				if(mImageMain.getVisibility() == View.VISIBLE);{
-					removeFrag(mSelectFrag);
-					//mShowFrag.setShowable(mSelectFrag.getThumbnailImage(), mSelectFrag.getImageName());
-					ImageView img = (ImageView) findViewById(R.id.imageShow);
-					TextView txt = (TextView) findViewById(R.id.textShow);
-					img.setImageBitmap(mSelectFrag.getThumbnailImage());
-					txt.setText(mSelectFrag.getImageName());
-				}
-			}
-		});
+		SelectImageFragment.OnSimpleFragmentCallbackListener listener = 
+				new SelectImageFragment.OnSimpleFragmentCallbackListener() {
+					@Override
+					public void onSimpleFragmentCallback() {
+						removeFrag(mSelectFrag);
+						//mShowFrag.setShowable(mSelectFrag.getThumbnailImage(), mSelectFrag.getImageName());
+						//mShowFrag.setName(mSelectFrag.getImageName());
+						//mImageMain.setVisibility(View.VISIBLE);
+						System.out.println("GOT CALL BACK: " + mSelectFrag.getImageName());
+						//mShowFrag.setName(mSelectFrag.getImageName());
+						//ImageView img = (ImageView) findViewById(R.id.imageShow);
+						//TextView txt = (TextView) findViewById(R.id.textShow);
+						//img.setImageBitmap(mSelectFrag.getThumbnailImage());
+						//txt.setText(mSelectFrag.getImageName());
+					}
+			};
+			
+		
+		mSelectFrag = new SelectImageFragment();
+		mSelectFrag.setSimpleFragmentCallbackListener(listener);
 		
 		mButtonImage.setOnClickListener(new OnClickListener(){
 			@Override
@@ -100,7 +114,6 @@ public class MainActivity extends Activity {
 	public void setImage(int id){
 		
 	}
-
 	
 	private SelectImageFragment mSelectFrag = null;
 	private ShowImageFragment mShowFrag = null;

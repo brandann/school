@@ -1,6 +1,5 @@
 package uwb.css390.BrandanHaertelEX4;
 
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,7 +36,6 @@ public class SelectImageFragment extends Fragment{
 		getActivity().getFragmentManager().beginTransaction().remove(this).commit();
 	}
 	
-	private int imagePos;
 	private Bitmap imageBitmap;
 	public Bitmap getThumbnailImage(){
 		return imageBitmap;
@@ -62,6 +59,15 @@ public class SelectImageFragment extends Fragment{
 //						//null);
 //	}
 	
+	OnSimpleFragmentCallbackListener mCallbackObject = null;
+	public interface OnSimpleFragmentCallbackListener {
+		public void onSimpleFragmentCallback();
+	}
+	// allow setting of the listener
+	public void setSimpleFragmentCallbackListener(OnSimpleFragmentCallbackListener listener) {
+		mCallbackObject = listener;
+	}
+	
 	private void populateList(){
 		ListElementAdapter.SetLayoutInflater(getActivity());
 		ListElementAdapter adapter = new ListElementAdapter(initilizeData(), getActivity().getApplicationContext());
@@ -72,7 +78,7 @@ public class SelectImageFragment extends Fragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				imagePos = position;
+				
 				ImageView img = (ImageView) getActivity().findViewById(R.id.imageSelect);
 				mImageRef.moveToPosition(position);
 				long fileID = mImageRef.getLong(mImageRef.getColumnIndex(MediaStore.Images.Media._ID));
@@ -84,13 +90,16 @@ public class SelectImageFragment extends Fragment{
 								MediaStore.Images.Thumbnails.MINI_KIND, // or MICRO_KIND: too small? 
 								null)
 						);
+				
 				imageBitmap = MediaStore.Images.Thumbnails.getThumbnail(
 						c.getContentResolver(), 
 						fileID, 
 						MediaStore.Images.Thumbnails.MINI_KIND, // or MICRO_KIND: too small? 
 						null);
+
 				img.setVisibility(View.VISIBLE);
-				killmyself();
+				//killmyself();
+				
 				//ImageView image = (ImageView) mMainActivity.findViewById(R.id.imageSelect);
 				
 				// let's try to get the values back ...
@@ -100,6 +109,7 @@ public class SelectImageFragment extends Fragment{
 				System.out.println("Pos=" + position + "\nN=" + name.getText().toString() 
 												+ "\nD=" + date.getText().toString());
 				imageName = name.getText().toString();
+				mCallbackObject.onSimpleFragmentCallback();
 			}
 			
 		});

@@ -10,7 +10,7 @@
     tools:context="uwb.css390.BrandanHaertelEX4.ListElementAdapter" >
 
     <TextView
-        android:id="@+id/textShow"
+        android:id="@+id/textShowfrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
         android:id="@+id/imageShow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textShow"
+        android:layout_below="@+id/textShowfrag"
         android:layout_centerHorizontal="true"
         android:scaleType="center"
         android:src="@drawable/ic_launcher" />
