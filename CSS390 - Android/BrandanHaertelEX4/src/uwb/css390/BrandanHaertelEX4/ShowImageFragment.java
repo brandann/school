@@ -1,7 +1,7 @@
 package uwb.css390.BrandanHaertelEX4;
 
-import uwb.css390.BrandanHaertelEX4.R;
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +20,13 @@ public ShowImageFragment(){}
     }
 	
 	public void setImage(String img){
+	}
+	
+	public void setShowable(Bitmap b, String n){
+		ImageView img = (ImageView) getActivity().findViewById(R.id.imageShow);
+		TextView txt = (TextView) getActivity().findViewById(R.id.textShow);
+		img.setImageBitmap(b);
+		txt.setText(n);
 	}
 	
 	ImageView mImageShow;

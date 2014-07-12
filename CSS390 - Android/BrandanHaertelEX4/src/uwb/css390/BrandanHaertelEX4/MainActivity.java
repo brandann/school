@@ -1,21 +1,19 @@
 package uwb.css390.BrandanHaertelEX4;
 
-import uwb.css390.BrandanHaertelEX4.R;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
@@ -33,6 +31,7 @@ public class MainActivity extends Activity {
 		mImageMain.setVisibility(View.INVISIBLE);
 		removeFrag(mSelectFrag);
 		addFrag(mSelectFrag = new SelectImageFragment());
+		mImageMain.setVisibility(View.INVISIBLE);
 	}
 	
 	private void ShowSelected(boolean checked){
@@ -68,6 +67,21 @@ public class MainActivity extends Activity {
 		mShowSelected = (CheckBox) findViewById(R.id.checkSelected);
 		mImageMain = (ImageView) findViewById(R.id.imageSelect);
 		
+		mImageMain.setOnSystemUiVisibilityChangeListener(new OnSystemUiVisibilityChangeListener(){
+
+			@Override
+			public void onSystemUiVisibilityChange(int arg0) {
+				if(mImageMain.getVisibility() == View.VISIBLE);{
+					removeFrag(mSelectFrag);
+					//mShowFrag.setShowable(mSelectFrag.getThumbnailImage(), mSelectFrag.getImageName());
+					ImageView img = (ImageView) findViewById(R.id.imageShow);
+					TextView txt = (TextView) findViewById(R.id.textShow);
+					img.setImageBitmap(mSelectFrag.getThumbnailImage());
+					txt.setText(mSelectFrag.getImageName());
+				}
+			}
+		});
+		
 		mButtonImage.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
@@ -81,6 +95,10 @@ public class MainActivity extends Activity {
 				ShowSelected(arg1);
 			}
 		});
+	}
+	
+	public void setImage(int id){
+		
 	}
 
 	

@@ -5,17 +5,21 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class SelectImageFragment extends Fragment{
+
 	
 	public SelectImageFragment(){
 		mMainActivity = getActivity();
@@ -30,6 +34,34 @@ public class SelectImageFragment extends Fragment{
         return rootView;
     }
 	
+	private void killmyself(){
+		getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+	}
+	
+	private int imagePos;
+	private Bitmap imageBitmap;
+	public Bitmap getThumbnailImage(){
+		return imageBitmap;
+	}
+	
+	public String getImageName(){
+		return imageName;
+	}
+	
+	private String imageName;
+	
+//	public Bitmap getHiResImage(){
+//		mImageRef.moveToPosition(imagePos);
+//		long fileID = mImageRef.getLong(mImageRef.getColumnIndex(MediaStore.Images.Media._ID));
+//		System.out.println("FileID: " + fileID);
+//		Context c = getActivity().getApplicationContext();
+//		return MediaStore.Images.Media.getBitmap(c.getContentResolver(), fileID);
+//						//c.getContentResolver(), 
+//						//fileID, 
+//						//MediaStore.Images.Thumbnails.MINI_KIND, // or MICRO_KIND: too small? 
+//						//null);
+//	}
+	
 	private void populateList(){
 		ListElementAdapter.SetLayoutInflater(getActivity());
 		ListElementAdapter adapter = new ListElementAdapter(initilizeData(), getActivity().getApplicationContext());
@@ -40,13 +72,34 @@ public class SelectImageFragment extends Fragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				imagePos = position;
+				ImageView img = (ImageView) getActivity().findViewById(R.id.imageSelect);
+				mImageRef.moveToPosition(position);
+				long fileID = mImageRef.getLong(mImageRef.getColumnIndex(MediaStore.Images.Media._ID));
+				System.out.println("FileID: " + fileID);
+				Context c = getActivity().getApplicationContext();
+				img.setImageBitmap(MediaStore.Images.Thumbnails.getThumbnail(
+								c.getContentResolver(), 
+								fileID, 
+								MediaStore.Images.Thumbnails.MINI_KIND, // or MICRO_KIND: too small? 
+								null)
+						);
+				imageBitmap = MediaStore.Images.Thumbnails.getThumbnail(
+						c.getContentResolver(), 
+						fileID, 
+						MediaStore.Images.Thumbnails.MINI_KIND, // or MICRO_KIND: too small? 
+						null);
+				img.setVisibility(View.VISIBLE);
+				killmyself();
+				//ImageView image = (ImageView) mMainActivity.findViewById(R.id.imageSelect);
+				
 				// let's try to get the values back ...
 				TextView name = (TextView) view.findViewById(R.id.listName);
 				TextView date = (TextView) view.findViewById(R.id.listDate);
 				
 				System.out.println("Pos=" + position + "\nN=" + name.getText().toString() 
 												+ "\nD=" + date.getText().toString());
-				
+				imageName = name.getText().toString();
 			}
 			
 		});
@@ -64,7 +117,7 @@ public class SelectImageFragment extends Fragment{
 	    // Make the query.
 	    System.out.println(dataToAccess.toString());
 	    Context c = getActivity().getApplicationContext();
-	    Cursor mImageRef = c.getContentResolver().query(
+	    mImageRef = c.getContentResolver().query(
 	    		MediaStore.Images.Media.EXTERNAL_CONTENT_URI, // Get the base URI for all of the images
 	            dataToAccess, 	// Which columns to return
 	            "",         	// Which rows to return (all rows)
@@ -78,13 +131,12 @@ public class SelectImageFragment extends Fragment{
 		if (mImageRef.getCount() > 0)
 			mImageRef.moveToFirst();
 		
+		
 		return mImageRef;
 	}
 	
-	public void setImage(String s){
-		
-	}
 	
-	ListView mList;
+	public ListView mList;
 	Activity mMainActivity;
+	Cursor mImageRef;
 }
