@@ -5,7 +5,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -79,6 +82,7 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
+
 	
 	private SelectImageFragment mSelectFrag = null;
 	private ShowImageFragment mShowFrag = null;
