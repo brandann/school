@@ -119,7 +119,6 @@ public class DrawArea extends SurfaceView implements SurfaceHolder.Callback, OnT
 		}
 		
 		mHero.setWorld(getWidth(), getHeight());
-		
 		mHero.updateMode();
 		mHero.updateShapeWithVelocity();
 		mHero.Draw(c);
@@ -154,9 +153,6 @@ public class DrawArea extends SurfaceView implements SurfaceHolder.Callback, OnT
 		onScreen--;
 		echoStats();
 	}
-	
-	
-	
 	
 	// Runnable
 	// -------------------------------------------------------------------------------------------------

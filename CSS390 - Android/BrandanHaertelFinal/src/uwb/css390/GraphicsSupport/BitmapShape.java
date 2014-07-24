@@ -34,14 +34,23 @@ public class BitmapShape extends Shape {
 		initializeBitmap(atX, atY, w, h);
 	}
 	
+	public BitmapShape(Context context,Bitmap b, int atX, int atY, int w, int h) {
+		mPaint = null;
+		mBitmap = b;
+		initializeBitmap(atX, atY, w, h);
+	}
+	
 	private void initializeBitmap(int x, int y, int w, int h) {
-		mBitmap = Bitmap.createScaledBitmap(mBitmap, w, h, false);
+		//mBitmap = Bitmap.createScaledBitmap(mBitmap, w, h, false);
 		mSrcRect = new Rect(0, 0, w, h);
 		mDstRect = new Rect();
 		mScaleX = mScaleY = 1.0f;
 		moveTo(x, y);
 	}
 	
+	public Bitmap getBitmap(){
+		return mBitmap;
+	}
 	// geometry
 	@Override
 	public void moveTo(float x, float y) {

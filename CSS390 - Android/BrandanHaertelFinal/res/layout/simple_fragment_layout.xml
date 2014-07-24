@@ -20,34 +20,28 @@
             android:id="@+id/drawArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeLayout1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp" />
+            android:layout_below="@+id/btnPicture"
+            android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:id="@+id/txtMiss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/relativeLayout1"
-            android:text="txtMiss" />
-
-        <TextView
-            android:id="@+id/txtCaught"
+        <Button
+            android:id="@+id/btnPicture"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:text="txtCaught" />
+            android:layout_alignRight="@+id/drawArea"
+            android:layout_marginRight="31dp"
+            android:text="Take Picture" />
 
-        <TextView
-            android:id="@+id/txtScreen"
+        <Button
+            android:id="@+id/btnSave"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/txtMiss"
-            android:layout_alignBottom="@+id/txtMiss"
-            android:layout_alignParentRight="true"
-            android:text="txtScreen" />
+            android:layout_above="@+id/drawArea"
+            android:layout_alignLeft="@+id/drawArea"
+            android:layout_marginLeft="43dp"
+            android:text="Save Image" />
 
     </RelativeLayout>
 
