@@ -1,0 +1,43 @@
+brandan@uw1-320-06:~/Documents/ThreadOS$ javac Shell.java
+brandan@uw1-320-06:~/Documents/ThreadOS$ java Boot
+threadOS ver 1.0:
+Type ? for help
+threadOS: a new thread (thread=Thread[Thread-3,2,main] tid=0 pid=-1)
+-->l Shell
+l Shell
+threadOS: a new thread (thread=Thread[Thread-5,2,main] tid=1 pid=0)
+
+shell[1]% PingPong abc 50
+threadOS: a new thread (thread=Thread[Thread-7,2,main] tid=2 pid=1)
+abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc 
+
+shell[2]% PingPong hello 50 ; PingPong goodbye 50
+threadOS: a new thread (thread=Thread[Thread-9,2,main] tid=3 pid=1)
+hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
+threadOS: a new thread (thread=Thread[Thread-11,2,main] tid=4 pid=1)
+goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye 
+
+shell[3]% PingPong ping 50 & PingPong pong 50
+threadOS: a new thread (thread=Thread[Thread-13,2,main] tid=5 pid=1)
+threadOS: a new thread (thread=Thread[Thread-15,2,main] tid=6 pid=1)
+ping ping ping ping ping ping ping ping ping ping ping ping ping ping ping ping ping ping ping ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong ping pong 
+pong pong pong pong pong pong pong pong pong pong pong pong pong pong pong pong pong pong pong 
+
+shell[4]% PingPong hi 50 ; PingPong bye 50 ;
+threadOS: a new thread (thread=Thread[Thread-17,2,main] tid=7 pid=1)
+hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi 
+threadOS: a new thread (thread=Thread[Thread-19,2,main] tid=8 pid=1)
+bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye bye 
+
+shell[5]% PingPong one 50 & PingPong two 50 &
+threadOS: a new thread (thread=Thread[Thread-21,2,main] tid=9 pid=1)
+threadOS: a new thread (thread=Thread[Thread-23,2,main] tid=10 pid=1)
+one one one one one one one one one one one one one one one one one one one one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two one two 
+two two two two two two two two two two two two two two two two two two two 
+
+shell[6]% exit
+-->quit
+quit
+Superblock synchronized
+brandan@uw1-320-06:~/Documents/ThreadOS$ 
+

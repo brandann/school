@@ -1,0 +1,4 @@
+brandan@brandan-xubuntu-vm:~/school_uw/CSS430/LAB1$ ./a.out
+grep: (standard input): Bad file descriptor
+wc: standard input: Bad file descriptor
+0
