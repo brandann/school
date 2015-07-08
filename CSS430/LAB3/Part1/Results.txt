@@ -1,0 +1,20 @@
+threadOS ver 1.0:
+Type ? for help
+threadOS: a new thread (thread=Thread[Thread-3,2,main] tid=0 pid=-1)
+-->l Shell
+l Shell
+threadOS: a new thread (thread=Thread[Thread-5,2,main] tid=1 pid=0)
+shell[1]% Test2
+Test2
+threadOS: a new thread (thread=Thread[Thread-7,2,main] tid=2 pid=1)
+threadOS: a new thread (thread=Thread[Thread-9,2,main] tid=3 pid=2)
+threadOS: a new thread (thread=Thread[Thread-11,2,main] tid=4 pid=2)
+threadOS: a new thread (thread=Thread[Thread-13,2,main] tid=5 pid=2)
+threadOS: a new thread (thread=Thread[Thread-15,2,main] tid=6 pid=2)
+threadOS: a new thread (thread=Thread[Thread-17,2,main] tid=7 pid=2)
+Thread[b]: response time = 3998 turnaround time = 4999 execution time = 1001
+Thread[e]: response time = 6999 turnaround time = 7500 execution time = 501
+Thread[c]: response time = 4999 turnaround time = 8002 execution time = 3003
+Thread[a]: response time = 2998 turnaround time = 8004 execution time = 5006
+Thread[d]: response time = 5999 turnaround time = 12006 execution time = 6007
+shell[2]% 

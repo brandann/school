@@ -1,0 +1,41 @@
+Part 1
+l Test3 3
+threadOS: a new thread (thread=Thread[Thread-5,2,main] tid=1 pid=0)
+threadOS: a new thread (thread=Thread[Thread-7,2,main] tid=2 pid=1)
+threadOS: a new thread (thread=Thread[Thread-9,2,main] tid=3 pid=1)
+threadOS: a new thread (thread=Thread[Thread-11,2,main] tid=4 pid=1)
+threadOS: a new thread (thread=Thread[Thread-13,2,main] tid=5 pid=1)
+threadOS: a new thread (thread=Thread[Thread-15,2,main] tid=6 pid=1)
+threadOS: a new thread (thread=Thread[Thread-17,2,main] tid=7 pid=1)
+comp finished...
+comp finished...
+comp finished...
+disk finished...
+disk finished...
+disk finished...
+elapsed time = 147866 msec.
+
+Part 2
+l Test3 3
+threadOS: a new thread (thread=Thread[Thread-5,2,main] tid=1 pid=0)
+threadOS: a new thread (thread=Thread[Thread-7,2,main] tid=2 pid=1)
+threadOS: a new thread (thread=Thread[Thread-9,2,main] tid=3 pid=1)
+threadOS: a new thread (thread=Thread[Thread-11,2,main] tid=4 pid=1)
+threadOS: a new thread (thread=Thread[Thread-13,2,main] tid=5 pid=1)
+threadOS: a new thread (thread=Thread[Thread-15,2,main] tid=6 pid=1)
+threadOS: a new thread (thread=Thread[Thread-17,2,main] tid=7 pid=1)
+comp finished...
+comp finished...
+comp finished...
+disk finished...
+disk finished...
+disk finished...
+elapsed time = 118497 msec.
+
+
+Kernal_P1 - Kernal_P2
+147866 msec. - 118497 msec. = 29369
+147.866 Sec - 118.497 Sec = 29.369 Sec
+-------------------------------------------
+
+Kernal_P2 with the ioqueue waits took 80% of the time that the busy waits took.
